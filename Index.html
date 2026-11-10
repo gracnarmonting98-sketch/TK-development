@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TK Development | Tiger & Konj</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101820;color:white;font-family:Arial,sans-serif}
+header{padding:22px;text-align:center;background:#172634}
+h1{color:#f5a623;margin:8px 0}
+nav{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:16px}
+a{color:#fff;text-decoration:none}
+.hero{text-align:center;padding:65px 20px;background:linear-gradient(135deg,#142e42,#18212b)}
+.hero h2{font-size:32px}
+p{line-height:1.6;color:#d5dce3}
+.btn,button{display:inline-block;background:#f5a623;color:#111;border:0;border-radius:8px;padding:13px 22px;font-weight:bold;cursor:pointer}
+section{padding:35px 20px;max-width:1050px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:#203140;padding:25px;border-radius:14px}
+.card h3{color:#f5a623}
+input,select,textarea{width:100%;padding:13px;margin:8px 0;border-radius:7px;border:1px solid #71808e;background:#fff;color:#111}
+form{max-width:480px;margin:auto}
+footer{text-align:center;background:#172634;padding:25px}
+small{color:#aebac5}
+</style>
+</head>
+<body>
+<header>
+<h1>TK DEVELOPMENT</h1>
+<strong>TIGER & KONJ</strong>
+<nav>
+<a href="#domov">Domov</a>
+<a href="#projekti">Projekti</a>
+<a href="#kako">Kako deluje</a>
+<a href="#registracija">Registracija</a>
+</nav>
+</header>
+
+<div class="hero" id="domov">
+<h2>Skupaj gradimo prihodnost.</h2>
+<p>Platforma za razvoj nepremičninskih projektov in povezovanje zainteresiranih investitorjev.</p>
+<a class="btn" href="#registracija">Pridruži se nam</a>
+</div>
+
+<section id="projekti">
+<h2>Naši projekti</h2>
+<div class="cards">
+<div class="card">
+<h3>Stanovanjske hiše</h3>
+<p>Razvoj in gradnja sodobnih stanovanjskih objektov.</p>
+<small>Projekti v pripravi</small>
+</div>
+<div class="card">
+<h3>Stanovanjski bloki</h3>
+<p>Večstanovanjske stavbe in večji razvojni projekti.</p>
+<small>Projekti v pripravi</small>
+</div>
+<div class="card">
+<h3>Poslovni objekti</h3>
+<p>Poslovne, industrijske in druge nepremičnine.</p>
+<small>Projekti v pripravi</small>
+</div>
+</div>
+</section>
+
+<section id="kako">
+<h2>Kako bo delovala platforma?</h2>
+<div class="cards">
+<div class="card"><h3>1. Registracija</h3><p>Ustvariš uporabniški račun.</p></div>
+<div class="card"><h3>2. Izbira projekta</h3><p>Pregledaš načrtovane gradbene projekte.</p></div>
+<div class="card"><h3>3. Povpraševanje</h3><p>Izraziš zanimanje za sodelovanje ali investiranje.</p></div>
+</div>
+</section>
+
+<section id="registracija">
+<h2 style="text-align:center">Registracija interesa</h2>
+<form id="interestForm">
+<input id="ime" placeholder="Ime in priimek" required>
+<input id="email" type="email" placeholder="E-pošta" required>
+<select id="vloga" required>
+<option value="">Izberi svojo vlogo</option>
+<option>Investitor</option>
+<option>Izvajalec</option>
+<option>Partner</option>
+<option>Drugo</option>
+</select>
+<textarea id="sporocilo" placeholder="Kaj te zanima?"></textarea>
+<button type="submit">Pripravi povpraševanje</button>
+<p id="obvestilo"></p>
+</form>
+</section>
+
+<footer>
+<strong>TK Development – Tiger & Konj</strong>
+<p>Slovenija | Gradimo prihodnost skupaj</p>
+<small>© 2026 TK Development</small>
+</footer>
+
+<script>
+document.getElementById("interestForm").addEventListener("submit",function(e){
+e.preventDefault();
+const ime=document.getElementById("ime").value;
+const email=document.getElementById("email").value;
+const vloga=document.getElementById("vloga").value;
+const sporocilo=document.getElementById("sporocilo").value;
+const besedilo="Ime: "+ime+"\nE-pošta: "+email+"\nVloga: "+vloga+"\nSporočilo: "+sporocilo;
+if(navigator.clipboard&&window.isSecureContext){
+navigator.clipboard.writeText(besedilo).then(()=>{
+document.getElementById("obvestilo").textContent="Podatki so kopirani. Registracija še ni aktivna.";
+}).catch(()=>{document.getElementById("obvestilo").textContent="Registracija še ni aktivna.";});
+}else{
+document.getElementById("obvestilo").textContent="Registracija še ni aktivna.";
+}
+});
+</script>
+</body>
+</html>
